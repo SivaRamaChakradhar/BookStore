@@ -52,7 +52,6 @@ const getWishlist = async (req, res) => {
 
 // Remove a book from the wishlist
 const removeFromWishlist = async (req, res) => {
-    const { bookId } = req.body;
     const userId = req.user?._id;
     const id = req.params.bookId || bookId;
 
