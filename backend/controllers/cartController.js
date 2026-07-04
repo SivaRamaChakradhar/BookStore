@@ -56,7 +56,7 @@ const getCartItems = async (req, res) => {
     try {
         const cartItems = await Cart.find({
             userId: req.user._id
-        }).populate("bookId", "title author price");
+        }).populate("bookId", "title author price itemImage");
 
         res.status(200).json({
             message: "Cart items fetched successfully",
