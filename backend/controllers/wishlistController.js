@@ -2,7 +2,12 @@ const WishList = require('../models/WishList');
 
 // Add a book to the wishlist
 const addToWishlist = async (req, res) => {
-    const { userId, bookId } = req.body;
+    const { bookId } = req.body;
+    const userId = req.user?._id;
+
+    if (!userId || !bookId) {
+        return res.status(400).json({ message: 'Missing user or book information' });
+    }
 
     try {
         let wishlist = await WishList.findOne({ user: userId });
@@ -11,8 +16,7 @@ const addToWishlist = async (req, res) => {
             wishlist = new WishList({ user: userId, books: [] });
         }
 
-        // Check if the book is already in the wishlist
-        if (wishlist.books.includes(bookId)) {
+        if (wishlist.books.some((id) => id.toString() === bookId)) {
             return res.status(400).json({ message: 'Book is already in the wishlist' });
         }
 
@@ -27,13 +31,17 @@ const addToWishlist = async (req, res) => {
 
 // Get the user's wishlist
 const getWishlist = async (req, res) => {
-    const { userId } = req.params;
+    const userId = req.user?._id;
+
+    if (!userId) {
+        return res.status(400).json({ message: 'Missing user information' });
+    }
 
     try {
         const wishlist = await WishList.findOne({ user: userId }).populate('books');
 
         if (!wishlist) {
-            return res.status(404).json({ message: 'Wishlist not found' });
+            return res.status(200).json({ wishlist: { user: userId, books: [] } });
         }
 
         res.status(200).json({ wishlist });
@@ -44,7 +52,13 @@ const getWishlist = async (req, res) => {
 
 // Remove a book from the wishlist
 const removeFromWishlist = async (req, res) => {
-    const { userId, bookId } = req.body;
+    const { bookId } = req.body;
+    const userId = req.user?._id;
+    const id = req.params.bookId || bookId;
+
+    if (!userId || !id) {
+        return res.status(400).json({ message: 'Missing user or book information' });
+    }
 
     try {
         const wishlist = await WishList.findOne({ user: userId });
@@ -53,7 +67,7 @@ const removeFromWishlist = async (req, res) => {
             return res.status(404).json({ message: 'Wishlist not found' });
         }
 
-        wishlist.books = wishlist.books.filter(book => book.toString() !== bookId);
+        wishlist.books = wishlist.books.filter((book) => book.toString() !== id);
         await wishlist.save();
 
         res.status(200).json({ message: 'Book removed from wishlist', wishlist });
