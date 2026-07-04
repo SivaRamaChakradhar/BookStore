@@ -1,0 +1,120 @@
+.orders-container{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:40px 70px;
+}
+
+.orders-title{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:40px;
+    font-size:40px;
+}
+
+.order-card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.order-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.order-item{
+    display:flex;
+    gap:20px;
+    margin:20px 0;
+}
+
+.order-item img{
+    width:120px;
+    height:170px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.book-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.book-info h2{
+    color:#1e293b;
+}
+
+.book-info p{
+    color:#64748b;
+    margin-top:8px;
+}
+
+.order-footer{
+    margin-top:20px;
+}
+
+.order-footer h3{
+    color:#16a34a;
+    margin-bottom:15px;
+}
+
+.status{
+    color:white;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+}
+
+/* Status Colors */
+
+.pending{
+    background:#f59e0b;
+}
+
+.confirmed{
+    background:#3b82f6;
+}
+
+.shipped{
+    background:#8b5cf6;
+}
+
+.delivered{
+    background:#22c55e;
+}
+
+.cancelled{
+    background:#ef4444;
+}
+
+.empty{
+    text-align:center;
+    margin-top:100px;
+    color:#64748b;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+    .orders-container{
+        padding:30px 20px;
+    }
+
+    .order-item{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .order-header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+}

@@ -1,0 +1,172 @@
+/* ---------- Login Page ---------- */
+
+.login-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ---------- Login Card ---------- */
+
+.login-form {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Heading ---------- */
+
+.form-title {
+    text-align: center;
+    font-size: 32px;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+/* ---------- Form ---------- */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group input {
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all .3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.25);
+}
+
+/* ---------- Button ---------- */
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* ---------- Register ---------- */
+
+.register-link {
+    text-align: center;
+    margin-top: 22px;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.register-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Error Message ---------- */
+
+.error-message {
+    color: #dc2626;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+
+    .login-form {
+        padding: 30px 24px;
+    }
+
+    .form-title {
+        font-size: 28px;
+    }
+
+    .form-group input {
+        padding: 12px;
+    }
+
+    .login-btn {
+        padding: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .login-container {
+        padding: 15px;
+    }
+
+    .login-form {
+        padding: 25px 20px;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .form-subtitle {
+        font-size: 14px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input {
+        font-size: 14px;
+    }
+
+    .login-btn {
+        font-size: 15px;
+    }
+}
