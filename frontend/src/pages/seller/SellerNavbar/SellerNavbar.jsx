@@ -28,7 +28,7 @@ const SellerNavbar = () => {
                     <Link to="/seller/books">My Products</Link>
                 </li>
                 <li>
-                    <Link to="/seller/cart">Add Books</Link>
+                    <Link to="/seller/add-book">Add Books</Link>
                 </li>
                 <li>
                     <Link to="/seller/orders">Orders</Link>

@@ -1,87 +1,148 @@
 .seller-home{
     min-height:100vh;
-    background:#f5f7fb;
-    padding:40px 70px;
+    background:#f5f5f5;
+    padding:40px;
 }
 
 .welcome{
+    font-size:32px;
     color:#2563eb;
     margin-bottom:35px;
 }
 
-.dashboard{
+.dashboard-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
     gap:25px;
-    margin-bottom:50px;
+    margin-bottom:40px;
 }
 
 .dashboard-card{
-    background:white;
-    padding:30px;
+    background:#fff;
     border-radius:15px;
+    padding:30px;
     text-align:center;
     box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-5px);
+}
+
+.card-icon{
+    font-size:40px;
+    margin-bottom:15px;
 }
 
 .dashboard-card h2{
-    font-size:40px;
+    font-size:36px;
     color:#2563eb;
 }
 
 .dashboard-card p{
+    color:#666;
     margin-top:10px;
-    color:#64748b;
+    font-size:16px;
 }
 
-.add-link{
-    display:inline-block;
-    text-decoration:none;
-    background:#2563eb;
-    color:white;
-    padding:12px 20px;
-    border-radius:10px;
-    margin-top:20px;
+.chart-container{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    margin-bottom:40px;
 }
 
-.section-title{
+.chart-container{
+    margin-top:40px;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.chart-title{
+    color:#2563eb;
+    margin-bottom:30px;
+    font-size:24px;
+}
+
+.chart-row{
+    display:flex;
+    align-items:center;
+    gap:20px;
     margin-bottom:25px;
-    color:#1e293b;
 }
 
-.books-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-    gap:25px;
+.chart-label{
+    width:120px;
+    font-weight:600;
+    color:#444;
+}
+
+.chart-bar{
+    flex:1;
+    height:22px;
+    background:#e8e8e8;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.chart-fill{
+    height:100%;
+    border-radius:30px;
+    transition:width .6s ease;
+}
+
+.chart-fill.items{
+    background:#2563eb;
+}
+
+.chart-fill.orders{
+    background:#d97706;
+}
+
+.chart-value{
+    width:40px;
+    text-align:right;
+    font-weight:700;
+    color:#333;
 }
 
 .quick-actions{
     display:flex;
+    justify-content:center;
     gap:20px;
-    margin-top:50px;
+    flex-wrap:wrap;
 }
 
-.action-btn{
-    text-decoration:none;
-    background:#2563eb;
-    color:white;
-    padding:14px 24px;
-    border-radius:10px;
-    transition:.3s;
-}
 
 .action-btn:hover{
-    background:#1d4ed8;
+    background:#2563eb;
 }
 
 @media(max-width:768px){
 
     .seller-home{
-        padding:30px 20px;
+        padding:20px;
+    }
+
+    .welcome{
+        font-size:26px;
+        text-align:center;
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
     }
 
     .quick-actions{
         flex-direction:column;
+    }
+
+    .action-btn{
+        text-align:center;
     }
 
 }
