@@ -8,10 +8,18 @@ export const getUsers = () => {
     return axiosClient.get("/admin/users");
 };
 
-export const getOrders = () => {
+export const getAllOrders = () => {
     return axiosClient.get("/admin/orders");
 };
 
 export const getBooks = () => {
     return axiosClient.get("/admin/books");
 };
+
+export const deleteUser = () => {
+    return axiosClient.delete("/admin/users/:id");
+}
+
+export const deleteBook = () => {
+    return axiosClient.delete("/admin/books/:id");
+}
