@@ -12,6 +12,15 @@ import Orders from './pages/user/Order/Orders.jsx';
 import Profile from './pages/user/Profile/Profile.jsx'
 
 import SellerHome from './pages/seller/SellerHome/SellerHome.jsx';
+import SellerBooks from './pages/seller/SellerBooks/SellerBooks.jsx';
+import Addbook from './pages/seller/AddBook/AddBook.jsx';
+import SellerOrders from './pages/seller/SellerOrder/SellerOrder.jsx';
+
+import AdminHome from './pages/admin/AdminHome/AdminHome.jsx';
+import AdminUsers from './pages/admin/AdminUsers/AdminUsers.jsx';
+import AdminOrders from './pages/admin/AdminOrders/AdminOrders.jsx';
+import AdminBooks from './pages/admin/AdminBooks/AdminBooks.jsx'
+
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PublicRoute from './components/PublicRoute.jsx';
 
@@ -41,6 +50,16 @@ const App = () => {
 
           <Route element = {<ProtectedRoute allowedRole="seller"/>}>
             <Route path="/seller/home" element={<SellerHome/>}/>
+            <Route path="/seller/books" element={<SellerBooks />}/>
+            <Route path="/seller/add-book" element={<Addbook />}/>
+            <Route path="/seller/orders" element={<SellerOrders />}/>
+          </Route>
+
+          <Route element = { <ProtectedRoute allowedRole="admin"/>}>
+            <Route path="/admin/home" element={<AdminHome />}/>
+            <Route path="/admin/users" element={<AdminUsers/>} />
+            <Route path="/admin/orders" element={<AdminOrders/>}/>
+            <Route path="/admin/books" element={<AdminBooks />}/>
           </Route>
         </Routes>
       </Router>
