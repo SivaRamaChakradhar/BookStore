@@ -1,0 +1,69 @@
+.users-container{
+    padding:40px;
+}
+
+.users-container h1{
+    color:#2563eb;
+    margin-bottom:30px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+th{
+    background: #2563eb;
+    color:white;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+}
+
+.role{
+    padding:6px 14px;
+    border-radius:20px;
+    color:white;
+    text-transform:capitalize;
+}
+
+.role.user{
+    background:#3b82f6;
+}
+
+.role.seller{
+    background:#22c55e;
+}
+
+.role.admin{
+    background:#ef4444;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:8px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+@media(max-width:768px){
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+
+}
