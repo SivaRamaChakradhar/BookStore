@@ -8,7 +8,7 @@ import {
 
 import { addToCart } from "../../../services/cartApi";
 
-import "./Wishlist.css";
+import "./WishList.css";
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
