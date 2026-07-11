@@ -1,10 +1,9 @@
 import "./home.css";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie'
 import onlineBookstore from "../../../assets/images.jpeg";
 
-import { useEffect, useState } from "react";
 import { getBooks } from "../../services/bookApi";
 import BookCard from "../BookCard/BookCard";
 
@@ -34,24 +33,25 @@ const Home = () => {
     const token = Cookies.get("user_token");
     const role = localStorage.getItem("role");
 
-    if (!token) return;
+    // if (!token) return;
+    if(token){
+      switch (role) {
+          case "user":
+              navigate("/user/home");
+              break;
 
-    switch (role) {
-        case "user":
-            navigate("/user/home");
-            break;
+          case "seller":
+              navigate("/seller/home");
+              break;
 
-        case "seller":
-            navigate("/seller/home");
-            break;
+          case "admin":
+              navigate("/admin/home");
+              break;
 
-        case "admin":
-            navigate("/admin/home");
-            break;
-
-        default:
-            break;
-    }
+          default:
+              break;
+      }
+  }
 
     const fetchBooks = async () => {
         try {
@@ -63,7 +63,7 @@ const Home = () => {
     };
 
     fetchBooks();
-}, [navigate]);
+}, []);
   return (
     <div className="home-container">
 
