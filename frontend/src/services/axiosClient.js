@@ -21,6 +21,4 @@ axiosClient.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-console.log(import.meta.env.VITE_API_URL);
-
 export default axiosClient;
