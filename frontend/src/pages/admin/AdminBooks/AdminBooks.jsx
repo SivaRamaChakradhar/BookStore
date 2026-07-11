@@ -29,6 +29,7 @@ const AdminBooks = () => {
             "Are you sure you want to delete this book?"
         );
         if (!confirmDelete) return;
+        console.log("deleting");
         try {
             await deleteBook(id);
             fetchBooks();

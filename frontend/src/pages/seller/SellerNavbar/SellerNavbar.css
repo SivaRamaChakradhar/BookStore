@@ -21,6 +21,15 @@
     color:#2563eb;
 }
 
+
+.user-info{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    color: #2563eb;
+    font-weight:600;
+}
+
 /* Navigation */
 
 .nav-links{

@@ -59,6 +59,14 @@
     transition: .3s;
 }
 
+.form-group select {
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: .3s;
+}
+
 .form-group input:focus {
     outline: none;
     border-color: #2563eb;

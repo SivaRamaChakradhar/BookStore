@@ -1,8 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+import { getProfile } from "../../../services/authApi";
+
 import "./UserNavbar.css";
 import Cookies from 'js-cookie'
 
 const UserNavbar = () => {
+    const [user, setUser] = useState({});
 
     const navigate = useNavigate();
 
@@ -12,9 +17,21 @@ const UserNavbar = () => {
         navigate("/");
     };
 
+    useEffect(() => {
+        const fetchUser = async() => {
+            try{
+                const {data} = await getProfile();
+                setUser(data.user);
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+        fetchUser();
+    }, [])
+
     return (
         <nav className="user-navbar">
-
             <div className="logo">
                 <Link to="/" className="logo-link">
                     📚 BookVerse
@@ -49,13 +66,17 @@ const UserNavbar = () => {
 
             </ul>
 
-            <button
-                className="logout-btn"
-                onClick={handleLogout}
-            >
-                Logout
-            </button>
-
+            <div className="user-info">
+                <button
+                    onClick={handleLogout}
+                    className="logout-btn"
+                >
+                    Logout
+                </button>
+                <span>
+                    👋 {user.name}
+                </span>
+            </div>
         </nav>
     );
 };

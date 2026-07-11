@@ -1,14 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
+
+
+import { useEffect, useState } from "react";
+import { getProfile } from "../../../services/authApi";
+
 import "./AdminNavbar.css";
 import Cookies from 'js-cookie'
 
 const AdminNavbar = () => {
+    const [user, setUser] = useState({});
     const navigate = useNavigate();
     const handleLogout = () => {
         Cookies.remove('user_token');
         localStorage.removeItem('role');
         navigate("/");
     };
+
+    useEffect(() => {
+        const fetchUser = async() => {
+            try{
+                const {data} = await getProfile();
+                setUser(data.user);
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+        fetchUser();
+    }, [])
 
     return (
         <nav className="user-navbar">
@@ -33,12 +52,17 @@ const AdminNavbar = () => {
                 </li>
             </ul>
 
-            <button
-                className="logout-btn"
-                onClick={handleLogout}
-            >
-                Logout
-            </button>
+            <div className="user-info">
+                <button
+                    onClick={handleLogout}
+                    className="logout-btn"
+                >
+                    Logout
+                </button>
+                <span>
+                    👋 {user.name}
+                </span>
+            </div>
         </nav>
     );
 };

@@ -1,9 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
+
+import { useState, useEffect } from 'react'
+import { getProfile } from "../../../services/authApi";
+
+
 import "./SellerNavbar.css";
 import Cookies from 'js-cookie'
 
 const SellerNavbar = () => {
-
+    const [user, setUser] = useState({});
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -11,6 +16,19 @@ const SellerNavbar = () => {
         localStorage.removeItem('role');
         navigate("/");
     };
+
+    useEffect(() => {
+        const fetchUser = async() => {
+            try{
+                const {data} = await getProfile();
+                setUser(data.user);
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+        fetchUser();
+    }, [])
 
     return (
         <nav className="user-navbar">
@@ -35,12 +53,17 @@ const SellerNavbar = () => {
                 </li>
             </ul>
 
-            <button
-                className="logout-btn"
-                onClick={handleLogout}
-            >
-                Logout
-            </button>
+            <div className="user-info">
+                <button
+                    onClick={handleLogout}
+                    className="logout-btn"
+                >
+                    Logout
+                </button>
+                <span>
+                    👋 {user.name}
+                </span>
+            </div>
         </nav>
     );
 };

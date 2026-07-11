@@ -5,6 +5,8 @@ import SellerNavbar from "../SellerNavbar/SellerNavbar";
 
 import {
     getSellerBooks,
+    deleteBook,
+    updateBook
 } from "../../../services/sellerApi";
 
 import "./SellerBooks.css";

@@ -12,6 +12,14 @@
     z-index:1000;
 }
 
+.user-info{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    color: #2563eb;
+    font-weight:600;
+}
+
 /* Logo */
 
 .logo-link{

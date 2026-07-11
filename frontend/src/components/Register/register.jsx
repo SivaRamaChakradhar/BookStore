@@ -5,7 +5,7 @@ import { registerUser } from "../../services/authApi";
 
 import Cookies from 'js-cookie';
 
-import "./Register.css";
+import "./register.css";
 
 const Register = () => {
 
@@ -15,6 +15,7 @@ const Register = () => {
         name: "",
         email: "",
         password: "",
+        role: "user",
         confirmPassword: ""
     });
 
@@ -56,7 +57,7 @@ const Register = () => {
 
         setError("");
 
-        const { name, email, password, confirmPassword } = formData;
+        const { name, email, password, confirmPassword, role } = formData;
 
         if (password !== confirmPassword) {
             return setError("Passwords do not match");
@@ -67,7 +68,8 @@ const Register = () => {
             await registerUser({
                 name,
                 email,
-                password
+                password,
+                role,
             });
 
             alert("Registration Successful");
@@ -135,6 +137,21 @@ const Register = () => {
                         onChange={handleChange}
                         required
                     />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Role</label>
+
+                    <select 
+                        name="role"
+                        value={formData.role}
+                        onChange={handleChange}
+                    >
+                        <option>seller</option>
+                        <option>user</option>
+                    </select>
 
                 </div>
 

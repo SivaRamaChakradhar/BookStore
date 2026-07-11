@@ -11,3 +11,11 @@ export const getSellerBooks = () => {
 export const getSellerOrders = () => {
     return axiosClient.get("/seller/orders");
 };
+
+export const deleteBook = (id) => {
+    return axiosClient.delete(`/seller/books/${id}`);
+}
+
+export const updateBook = (id) => {
+    return axiosClient.put(`/seller/books/${id}`);
+}

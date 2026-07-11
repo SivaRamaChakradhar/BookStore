@@ -16,10 +16,10 @@ export const getBooks = () => {
     return axiosClient.get("/admin/books");
 };
 
-export const deleteUser = () => {
-    return axiosClient.delete("/admin/users/:id");
+export const deleteUser = (id) => {
+    return axiosClient.delete(`/admin/users/${id}`);
 }
 
-export const deleteBook = () => {
-    return axiosClient.delete("/admin/books/:id");
+export const deleteBook = (id) => {
+    return axiosClient.delete(`/admin/books/${id}`);
 }
