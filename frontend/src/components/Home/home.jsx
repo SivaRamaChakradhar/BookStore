@@ -4,6 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie'
 import onlineBookstore from "../../../assets/images.jpeg";
 
+import { useEffect, useState } from "react";
+import { getBooks } from "../../services/bookApi";
+import BookCard from "../BookCard/BookCard";
+
 const categories = [
   {
     icon: "📖",
@@ -24,6 +28,7 @@ const categories = [
 ];
 
 const Home = () => {
+  const [books, setBooks] = useState([]);
   const navigate = useNavigate()
   useEffect(() => {
     const token = Cookies.get("user_token");
@@ -47,6 +52,17 @@ const Home = () => {
         default:
             break;
     }
+
+    const fetchBooks = async () => {
+        try {
+            const { data } = await getBooks();
+            setBooks(data.books.slice(0, 4));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    fetchBooks();
 }, [navigate]);
   return (
     <div className="home-container">
@@ -121,11 +137,14 @@ const Home = () => {
         <h2>Featured Books</h2>
 
         <div className="books-grid">
-
-          <div className="book-placeholder">
-            Books from API will appear here
-          </div>
-
+            {
+                books.map(book => (
+                    <BookCard
+                        key={book._id}
+                        book={book}
+                    />
+                ))
+            }
         </div>
 
       </section>
